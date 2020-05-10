@@ -31,9 +31,9 @@ class AppFixtures extends Fixture
         //User LOOP
         for($u = 0 ; $u < 10 ; $u++){
             
-            $user = new User();
+            $user   = new User();
             $chrono = 1;
-            $hash = $this->encoder->encodePassword($user, "password"); 
+            $hash   = $this->encoder->encodePassword($user, "password"); 
 
             $user->setFirstName($faker->firstName())
                 ->setLastName($faker->lastName)
@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
                 ->setEmail($faker->email);
             $manager->persist($user);
         //Customer LOOP
-            for($c  = 0 ;  $c < mt_rand(5,20) ; $c++){
+            for($c        = 0 ;  $c < mt_rand(5,20) ; $c++){
                 $customer = new Customer();
                 $customer->setFirstName( $faker->firstName())
                     ->setLastName($faker->lastName)
