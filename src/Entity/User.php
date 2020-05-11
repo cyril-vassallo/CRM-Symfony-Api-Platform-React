@@ -13,7 +13,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext= {
+ *          "groups"= {"users_read"}})
  * @UniqueEntity("email", message="Un utilisateur ayant cette adresse email existe déjà !")
  */
 class User implements UserInterface
@@ -22,13 +24,13 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"customers_read", "invoices_read"})
+     * @Groups({"customers_read", "invoices_read", "users_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"customers_read", "invoices_read"})
+     * @Groups({"customers_read", "invoices_read", "users_read"})
      * @Assert\NotBlank(message="L'email est obligatoire")
      * @Assert\Email(message="Le format de l'email est incorrect !")
      */
@@ -48,7 +50,7 @@ class User implements UserInterface
     
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"customers_read", "invoices_read"})
+     * @Groups({"customers_read", "invoices_read", "users_read"})
      * @Assert\NotBlank(message="Le prénom est obligatoire")
      * @Assert\Length(min=2 , minMessage="Le prénom doit faire plus de 2 caractères",
      * max=255 , maxMessage="Le prénom ne peut excéder 255 caractères")
@@ -57,7 +59,7 @@ class User implements UserInterface
     
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"customers_read", "invoices_read"})
+     * @Groups({"customers_read", "invoices_read", "users_read"})
      * @Assert\NotBlank(message="Le nom est obligatoire")
      * @Assert\Length(min=2 , minMessage="Le nom de famille doit faire plus de 2 caractères",
      * max=255 , maxMessage="Le nom de famille ne peut excéder 255 caractères")
@@ -66,7 +68,7 @@ class User implements UserInterface
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Customer", mappedBy="user")
-     * @Groups({"customers_read", "invoices_read"}))
+     * @Groups({"invoices_read"})
      */
     private $customers;
 

@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
         "laminas/laminas-code": "^3.4",
+        "lexik/jwt-authentication-bundle": "^2.6",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
