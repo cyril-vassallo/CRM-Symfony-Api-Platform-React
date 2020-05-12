@@ -1,5 +1,5 @@
 # api-course
-Projet de formation pour la réalisation d'une mini CRM de type API connecté à une SPA 
+Small CRM project to practice Symfony 4 with Api-platform and React
 
 ## Technos
 - Symfony4
