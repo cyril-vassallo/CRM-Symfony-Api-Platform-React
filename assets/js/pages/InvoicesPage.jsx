@@ -20,7 +20,8 @@ const InvoicesPage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
-
+  const itemsPerPage = 10;
+  
   //Get the list of Invoices
   const fetchInvoices = async () => {
     try {
@@ -41,9 +42,10 @@ const InvoicesPage = (props) => {
   const handleDelete = async (id) => {
     const originalInvoices = [...invoices];
     setInvoices(invoices.filter((invoice) => invoice.id !== id));
-
+    console.log("delete: "+id);
+    
     try {
-      await InvoiceAPI.delete(id);
+      await InvoicesAPI.delete(id);
     } catch (error) {
       setInvoices(originalInvoices);
     }
@@ -59,7 +61,6 @@ const InvoicesPage = (props) => {
     setCurrentPage(1);
   };
 
-  const itemsPerPage = 10;
 
   //Filter Invoice according to search
   const filteredInvoices = invoices.filter(
@@ -77,6 +78,7 @@ const InvoicesPage = (props) => {
     itemsPerPage
   );
 
+  //Format date Method  ex: 25/12/2020
   const formatDate = (str) => moment(str).format("DD/MM/YYYY");
 
 

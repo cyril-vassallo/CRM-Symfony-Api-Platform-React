@@ -7,6 +7,7 @@ const CustomersPage = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const itemsPerPage = 10;
 
   //Get the list of customers
   const fetchCustomers = async () => {
@@ -46,7 +47,6 @@ const CustomersPage = (props) => {
     setCurrentPage(1);
   };
 
-  const itemsPerPage = 10;
 
   //Filter customer according to search
   const filteredCustomers = customers.filter(
