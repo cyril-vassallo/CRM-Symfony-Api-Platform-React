@@ -12,6 +12,7 @@ stop:
 	
 start:
 	php bin/console server:start
+	npm run dev-server
 
 
 create-token:

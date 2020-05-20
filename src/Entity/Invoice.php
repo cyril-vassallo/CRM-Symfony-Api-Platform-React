@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
  * @ApiResource(
  * attributes = {
- *      "pagination_enabled" = true,
+ *      "pagination_enabled" = false,
  *      "maximum_items_per_page" = 20,
  *      "order" : { "sentAt" : "desc" }
  *    },
